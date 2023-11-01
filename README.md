@@ -73,8 +73,10 @@ classDiagram
   }
 
   Usuario --|> Fisioterapeuta : É
-  Usuario --o Paciente : Atende
+  Fisioterapeuta --o Paciente : Atende
   Paciente --o FichaAnamnese : Possui
+  Paciente --o Endereco : Possui
+  Fisioterapeuta --o Endereco : Possui
   FichaAnamnese --o Pergunta : Contém
 
 
