@@ -23,63 +23,65 @@ MySQL (ou outro banco de dados à sua escolha)
 
 
 ```mermaid
-classDiagram
+ classDiagram
   class FisioManager {
-    - usuarios: Lista<Usuario>
-    + adicionarUsuario(usuario: Usuario): void
-    + removerUsuario(usuario: Usuario): void
-    + getUsuarios(): Lista<Usuario>
+    - users: List<Usuario>
+    + addUser(user: Usuario): void
+    + removeUser(user: Usuario): void
+    + getUsers(): List<Usuario>
   }
 
   class Usuario {
     - userId: int
-    - nomeUsuario: String
-    - senha: String
-    - pacientes: Lista<Paciente>
-    + adicionarPaciente(paciente: Paciente): void
-    + removerPaciente(paciente: Paciente): void
-    + getPacientes(): Lista<Paciente>
+    - username: String
+    - password: String
+    - pacientes: List<Paciente>
+    + addPaciente(paciente: Paciente): void
+    + removePaciente(paciente: Paciente): void
+    + getPacientes(): List<Paciente>
   }
 
   class Paciente {
     - pacienteId: int
     - nome: String
-    - dataNascimento: Data
     - endereco: Endereco
-    - casosClinicos: Lista<CasoClinico>
-    + adicionarCasoClinico(caso: CasoClinico): void
-    + removerCasoClinico(caso: CasoClinico): void
-    + getCasosClinicos(): Lista<CasoClinico>
+    - fichasAnamnese: List<FichaAnamnese>
+    + adicionarEndereco(endereco: Endereco): void
+    + getEndereco(): Endereco
+    + adicionarFichaAnamnese(ficha: FichaAnamnese): void
+    + getFichasAnamnese(): List<FichaAnamnese>
+  }
+
+  class FichaAnamnese {
+    - fichaId: int
+    - tipo: String
+    - perguntas: List<Pergunta>
+    + adicionarPergunta(pergunta: Pergunta): void
+    + removerPergunta(pergunta: Pergunta): void
+    + getPerguntas(): List<Pergunta>
+  }
+
+  class Pergunta {
+    - perguntaId: int
+    - texto: String
+    - resposta: String
+    + atualizarResposta(resposta: String): void
   }
 
   class Endereco {
+    - enderecoId: int
     - rua: String
     - cep: String
-    - numeroCasa: String
+    - numero: String
     - bairro: String
   }
 
-  class CasoClinico {
-    - casoId: int
-    - estado: String
-    - tratamento: String
-    - evolucoes: Lista<Evolucao>
-    + adicionarEvolucao(evolucao: Evolucao): void
-    + removerEvolucao(evolucao: Evolucao): void
-    + getEvolucoes(): Lista<Evolucao>
-  }
+  FisioManager --* Usuario : Gerencia
+  Usuario --* Paciente : Atende
+  Paciente --* Endereco : Possui
+  Paciente --* FichaAnamnese : Possui
+  FichaAnamnese --* Pergunta : Contém
 
-  class Evolucao {
-    - evolucaoId: int
-    - data: Data
-    - descricao: String
-    + getDetalhesEvolucao(): String
-  }
 
-  FisioManager --|> Usuario : Gerencia
-  Usuario --|> Paciente : Possui
-  Paciente -- Endereco : Possui
-  Paciente --|> CasoClinico : Tem
-  CasoClinico --|> Evolucao : Contem
 
 ```
