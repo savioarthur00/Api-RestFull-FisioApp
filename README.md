@@ -22,48 +22,64 @@ Spring Boot
 MySQL (ou outro banco de dados à sua escolha)
 
 
-``` mermaid
+```mermaid
 classDiagram
+  class FisioManager {
+    - usuarios: Lista<Usuario>
+    + adicionarUsuario(usuario: Usuario): void
+    + removerUsuario(usuario: Usuario): void
+    + getUsuarios(): Lista<Usuario>
+  }
+
   class Usuario {
-    +id: Long
-    +login: String
-    +senha: String
+    - userId: int
+    - nomeUsuario: String
+    - senha: String
+    - pacientes: Lista<Paciente>
+    + adicionarPaciente(paciente: Paciente): void
+    + removerPaciente(paciente: Paciente): void
+    + getPacientes(): Lista<Paciente>
   }
 
   class Paciente {
-    +id: Long
-    +nome: String
-    +idade: int
-    +endereco: Endereco
-    +casosClinicos: List<CasoClinico>
+    - pacienteId: int
+    - nome: String
+    - dataNascimento: Data
+    - endereco: Endereco
+    - casosClinicos: Lista<CasoClinico>
+    + adicionarCasoClinico(caso: CasoClinico): void
+    + removerCasoClinico(caso: CasoClinico): void
+    + getCasosClinicos(): Lista<CasoClinico>
   }
-  
+
   class Endereco {
-    +rua: String
-    +cep: String
-    +numero: String
-    +bairro: String
+    - rua: String
+    - cep: String
+    - numeroCasa: String
+    - bairro: String
   }
 
   class CasoClinico {
-    +id: Long
-    +estado: String
-    +tratamento: String
-    +evolucoes: List<Evolucao>
+    - casoId: int
+    - estado: String
+    - tratamento: String
+    - evolucoes: Lista<Evolucao>
+    + adicionarEvolucao(evolucao: Evolucao): void
+    + removerEvolucao(evolucao: Evolucao): void
+    + getEvolucoes(): Lista<Evolucao>
   }
-  
+
   class Evolucao {
-    +id: Long
-    +descricao: String
-    +dataRegistro: Date
+    - evolucaoId: int
+    - data: Data
+    - descricao: String
+    + getDetalhesEvolucao(): String
   }
 
-  class Fisioterapeuta {
-    +id: Long
-    +nome: String
-  }
+  FisioManager --|> Usuario : Gerencia
+  Usuario --|> Paciente : Possui
+  Paciente -- Endereco : Possui
+  Paciente --|> CasoClinico : Tem
+  CasoClinico --|> Evolucao : Contem
 
-  Paciente -- CasoClinico: "Possui"
-  CasoClinico -- Evolucao: "Possui"
-  Fisioterapeuta --|> Usuario: "Herda"
-  '''
+```
