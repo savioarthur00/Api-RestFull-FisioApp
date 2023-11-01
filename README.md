@@ -21,24 +21,20 @@ Java
 Spring Boot
 MySQL (ou outro banco de dados à sua escolha)
 
-
+# Diagrama de classe 
 ```mermaid
- classDiagram
-  class FisioManager {
-    - users: List<Usuario>
-    + addUser(user: Usuario): void
-    + removeUser(user: Usuario): void
-    + getUsers(): List<Usuario>
-  }
-
+classDiagram
   class Usuario {
     - userId: int
     - username: String
     - password: String
-    - pacientes: List<Paciente>
     + addPaciente(paciente: Paciente): void
     + removePaciente(paciente: Paciente): void
     + getPacientes(): List<Paciente>
+  }
+
+  class Fisioterapeuta {
+    + atendePacientes(paciente: Paciente): void
   }
 
   class Paciente {
@@ -76,11 +72,11 @@ MySQL (ou outro banco de dados à sua escolha)
     - bairro: String
   }
 
-  FisioManager --* Usuario : Gerencia
-  Usuario --* Paciente : Atende
-  Paciente --* Endereco : Possui
-  Paciente --* FichaAnamnese : Possui
-  FichaAnamnese --* Pergunta : Contém
+  Usuario --|> Fisioterapeuta : É
+  Usuario --o Paciente : Atende
+  Paciente --o FichaAnamnese : Possui
+  FichaAnamnese --o Pergunta : Contém
+
 
 
 
