@@ -28,15 +28,15 @@ classDiagram
     - userId: int
     - username: String
     - password: String
-    + addPaciente(paciente: Paciente): void
-    + removePaciente(paciente: Paciente): void
-    + getPacientes(): List<Paciente>
+    
   }
 
   class Fisioterapeuta {
-    + atendePacientes(paciente: Paciente): void
     + realizaEvolucoes(evolucao: Evolucao): void
-    + preencheFichaDeAnamnese(fichaAnamnese:FichaAnamnese):void    
+    + preencheFichaDeAnamnese(fichaAnamnese:FichaAnamnese):void
+    + addPaciente(paciente: Paciente): void
+    + removePaciente(paciente: Paciente): void
+    + getPacientes(): List<Paciente>  
      
   }
 
