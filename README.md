@@ -35,6 +35,9 @@ classDiagram
 
   class Fisioterapeuta {
     + atendePacientes(paciente: Paciente): void
+    + realizaEvolucoes(evolucao: Evolucao): void
+    + preencheFichaDeAnamnese(fichaAnamnese:FichaAnamnese):void    
+     
   }
 
   class Paciente {
@@ -42,9 +45,7 @@ classDiagram
     - indetificacao: Identificacao
     - endereco: Endereco
     - fichasAnamnese: List<FichaAnamnese>
-    + adicionarEndereco(endereco: Endereco): void
     + getEndereco(): Endereco
-    + adicionarFichaAnamnese(ficha: FichaAnamnese): void
     + getFichasAnamnese(): List<FichaAnamnese>
   }
 
@@ -59,21 +60,47 @@ classDiagram
   }
   class HistoriaClinica{
     -historiaClinicaId: int
+    -habitosDeVida: HabitosDeVida
+    -medicamentos: Medicamentos
+    -antecedentesPessoais:AntecedentesPessoais
     -queixaPrincipal:String
     -historiaDaDoenca:String
     -historiaFamiliar:String 
-    -historiaPsicosocial:String 
-    -habitosDeVida:String
-    -medicamentos: Medicamentos
-    -Cirurgias: String
+    -historiaPsicosocial:String
+    -cirurgias: String
     -Internações:String
     -antecedentesMaternos: String
     -habitosAlimentares:String
     -sono:String
-    -antecedentesPessoais:AntecedentesPessoais
+    
+}
+
+  class HabitosDeVida {
+    -habitosDeVidaID: int
+    -alergia:Alergia
+    -alimentacao: Alimentacao
+    -exerciciosFisicos: Boolean
+    -exerciciosFisicos_QntVezesNaSemana: int
+    -ingestaoDeAguaPorDia_QuantosLitros: String
+    -fumante: boolean
+    -ingestaoDeBebidaAlcoolica: Boolean
+}
+
+  class Alergia {
+  -alergiaId: int
+  -possuiAlergia: boolean
+  -quaisAlergias: String
+  }
+
+  class Alimentacao {
+  -alimentacaoID: int
+  -regimeNutricional: boolean
+  -alimentacaoBalanceada: boolean
+  -NenhumaDasAlternativas: boolean 
 }
   class AntecedentesPessoais{
     - antecedentesPessoaisId: int
+    - alergia:Alergia
     - doençaCardiorrespiratoria: Boolean
     - constipacaoIntestinal: Boolean
     - doençaRenal: Boolean
@@ -82,7 +109,6 @@ classDiagram
     - infeccaoUrinária: Boolean
     - diabetes: Boolean
     - obesidade: Boolean
-    - alergias: Boolean
     - tabagismo/etilismo: Boolean
     - outros:String
 }
@@ -100,28 +126,61 @@ class Medicamentos{
 }
   class ExameFisico {
     exameFisicoId: int
+    
   }
+
+  class TratamentosEsteticos{
+  -tratamentosEsteticosID: int
+  -jaRealizou: boolean
+  -quaisCirurgicos: String
+  -quaisNaoCirurgico: String
+  -CuidadosDiarioseProdutosEmUso: String
+  -medicamentos:Medicamentos 
+  }
+
+  class Evolucao{
+    evolucaoId: int
+    data:Date
+    descriçãoDoEstadoGeral:String
+    condutaAplicada:String
+    eventuaisIntercorrências: String
+    assinatura: String
+}
 
   class Indentificacao {
        -identificacaoId: int
        -endereco: Endereco
        -nome: String
-       -sata da avaliação: Date
+       -dataDaAvaliação: Date
        -sexo: String
        -estado civil: String
        -idade: int
        -raça: String
-       -data do nascimento: String
+       -dataDoNascimento: String
        -profissão: String 
        -ocupação: String
        -contato: Contato
        -responsável: String
-       -diagnóstico Clínico: String
+       -diagnósticoClínico: String
        -cLassificacaoDasDoencas: String
        -nomeDoMedico: String
        -especialidade: String
 
    }
+  class Bebê {
+    - bebeId: int
+    - pesoAoNascer: String
+    - tipoDeParto: String
+    - idadeGestacional: int
+    - intercorrenciasIntraparto: String
+    - intercorrenciasPosParto: String 
+    - escalaAPGAR_1Min: String 
+    - escalaAPGAR_5Min: String
+    - desenvolvimento: String
+    - alergias: boolean
+    - descricaoAlergias: String
+    - imunizacoes: String
+}
 
 class Contato {
     -contatoId: int
@@ -139,20 +198,27 @@ class Contato {
   }
 
   Usuario --|> Fisioterapeuta : É
-  Fisioterapeuta --o Paciente : Atende
+  Bebê --|> Paciente: É
+  Fisioterapeuta --o Endereco : Possui
+  Fisioterapeuta -- Paciente : Atende
+  Fisioterapeuta -- Evolucao: Realiza
+  Fisioterapeuta -- FichaAnamnese: Preenche
+  Fisioterapeuta -- Indentificacao: Preenche
+  Paciente --o Evolucao: Possui
   Paciente --o FichaAnamnese : Possui
   Paciente --o Indentificacao: Possui
   Indentificacao --o Endereco : Contém
   Indentificacao --o Contato : Contém
-  Fisioterapeuta --o Endereco : Possui
   FichaAnamnese --o Indentificacao : Contém
   FichaAnamnese --o ExameFisico : Contém
   FichaAnamnese --o HistoriaClinica : Contém
-  HistoriaClinica --o Medicamentos: Possui
+  HistoriaClinica --o Medicamentos: Contém
   HistoriaClinica --o AntecedentesPessoais: Contém
-  
-  
-
+  HistoriaClinica --o HabitosDeVida: Contém
+  AntecedentesPessoais --o Alergia: Contém
+  HabitosDeVida --o Alergia: Contém
+  HabitosDeVida --o Alimentacao: Contém
+  TratamentosEsteticos --o Medicamentos: Contém
 
 
 ```
