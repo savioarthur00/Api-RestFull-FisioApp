@@ -197,7 +197,7 @@ class Contato {
     - bairro: String
   }
 
-  Usuario --|> Fisioterapeuta : É
+  Fisioterapeuta --|> Usuario : É
   Bebê --|> Paciente: É
   Fisioterapeuta --o Endereco : Possui
   Fisioterapeuta -- Paciente : Atende
