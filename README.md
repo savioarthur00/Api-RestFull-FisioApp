@@ -39,7 +39,7 @@ classDiagram
 
   class Paciente {
     - pacienteId: int
-    - nome: String
+    - indetificacao: Identificacao
     - endereco: Endereco
     - fichasAnamnese: List<FichaAnamnese>
     + adicionarEndereco(endereco: Endereco): void
@@ -50,19 +50,85 @@ classDiagram
 
   class FichaAnamnese {
     - fichaId: int
-    - tipo: String
-    - perguntas: List<Pergunta>
-    + adicionarPergunta(pergunta: Pergunta): void
-    + removerPergunta(pergunta: Pergunta): void
-    + getPerguntas(): List<Pergunta>
+    - identificacao: Identificacao
+    - exameFisico: ExameFisico
+    - historiaClinica: HistoriaClinica
+    + getIdentificacao(): Identificacao
+    + getExameFisico():ExameFisico
+    + getHistoriaClinica():HistoriaClinica
+  }
+  class HistoriaClinica{
+    -historiaClinicaId: int
+    -queixaPrincipal:String
+    -historiaDaDoenca:String
+    -historiaFamiliar:String 
+    -historiaPsicosocial:String 
+    -habitosDeVida:String
+    -medicamentos: Medicamentos
+    -Cirurgias: String
+    -Internações:String
+    -antecedentesMaternos: String
+    -habitosAlimentares:String
+    -sono:String
+    -antecedentesPessoais:AntecedentesPessoais
+}
+  class AntecedentesPessoais{
+    - antecedentesPessoaisId: int
+    - doençaCardiorrespiratoria: Boolean
+    - constipacaoIntestinal: Boolean
+    - doençaRenal: Boolean
+    - hemorroidas: Boolean
+    - neoplasias: Boolean
+    - infeccaoUrinária: Boolean
+    - diabetes: Boolean
+    - obesidade: Boolean
+    - alergias: Boolean
+    - tabagismo/etilismo: Boolean
+    - outros:String
+}
+
+class Medicamentos{
+- medicamentosId: int
+- tranquilizantes: boolean
+- anticolinergicos: boolean
+- corticoides: boolean
+- hormonios: boolean
+- diuréticos: boolean
+- alfadrenergicos: boolean
+- antidepressivos: boolean
+- hipotensores: boolean
+}
+  class ExameFisico {
+    exameFisicoId: int
   }
 
-  class Pergunta {
-    - perguntaId: int
-    - texto: String
-    - resposta: String
-    + atualizarResposta(resposta: String): void
-  }
+  class Indentificacao {
+       -identificacaoId: int
+       -endereco: Endereco
+       -nome: String
+       -sata da avaliação: Date
+       -sexo: String
+       -estado civil: String
+       -idade: int
+       -raça: String
+       -data do nascimento: String
+       -profissão: String 
+       -ocupação: String
+       -contato: Contato
+       -responsável: String
+       -diagnóstico Clínico: String
+       -cLassificacaoDasDoencas: String
+       -nomeDoMedico: String
+       -especialidade: String
+
+   }
+
+class Contato {
+    -contatoId: int
+    -Telefone: String 
+    -Email: String
+    -NumeroDoResponsavel:String
+}
 
   class Endereco {
     - enderecoId: int
@@ -75,10 +141,17 @@ classDiagram
   Usuario --|> Fisioterapeuta : É
   Fisioterapeuta --o Paciente : Atende
   Paciente --o FichaAnamnese : Possui
-  Paciente --o Endereco : Possui
+  Paciente --o Indentificacao: Possui
+  Indentificacao --o Endereco : Contém
+  Indentificacao --o Contato : Contém
   Fisioterapeuta --o Endereco : Possui
-  FichaAnamnese --o Pergunta : Contém
-
+  FichaAnamnese --o Indentificacao : Contém
+  FichaAnamnese --o ExameFisico : Contém
+  FichaAnamnese --o HistoriaClinica : Contém
+  HistoriaClinica --o Medicamentos: Possui
+  HistoriaClinica --o AntecedentesPessoais: Contém
+  
+  
 
 
 
