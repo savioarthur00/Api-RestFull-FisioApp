@@ -124,10 +124,134 @@ class Medicamentos{
 - antidepressivos: boolean
 - hipotensores: boolean
 }
-  class ExameFisico {
-    exameFisicoId: int
-    
-  }
+ class Consciencia {
+        NORMAL
+        OBNUBILACAO
+        TORPOR
+        COMA
+    }
+
+    class FormatoTorax {
+        NORMAL
+        TONEL
+        CARINATUM
+        SCAVATUM
+        SINUS
+    }
+
+    class ViaDeAcessoDoAr {
+        NASAL
+        ORAL
+        TRAQUEOSTOMIA
+    }
+
+    class UsoDeOxigenoterapia {
+        NAO
+        SIM
+        CONTINUO
+        ESPECIFICOS
+    }
+
+    class PadraoMuscularVentilatorio {
+        APICAL
+        DIAFRAGMATICO
+        MISTO
+        PARADOXAL
+    }
+
+    class RitmoVentilatorio {
+        REGULAR
+        IRREGULAR
+    }
+
+    class ExpansibilidadeToracica {
+        NORMAL
+        REDUZIDA
+        SIMETRICA
+        ASSIMETRICA
+    }
+
+    class Sinais {
+        CIANOSE
+        EDEMA
+        PALIDEZ
+        TIRAGEM
+        BATIMENTO_DA_ASA_DO_NARIZ
+        AUMENTO_DA_FR
+        GEMIDO
+    }
+
+    class Sintomas {
+        DISPNEIA
+        DOR
+        TONTURA
+    }
+class UsoMusculaturaAcessoria {
+        NAO
+        SIM
+    }
+
+    class Tosse {
+        AUSENTE
+        PRESENTE
+        PRODUTIVA
+        IMPRODUTIVA
+        EFICAZ
+        INEFICAZ
+    }
+
+    class Secrecao {
+        MUCOIDE
+        MUCOPURULENTA
+        PURULENTA
+        HEMATICA
+        OUTROS
+    }
+
+    class Dispneia {
+        AUSENTE
+        PRESENTE
+    }
+
+class Cianose { Ausente Presente Local }
+
+class ExameCardiorespiratorio{
+  - exameCardiorespiratorioId: int
+  - fc:String + "bpm"
+  - fR: String + "r.p.m"
+  - pA:String +  "X"  "mmHg"
+  - spO2: int
+  - temperatura: int 
+  - peso: double
+  - altura: double
+  - iMC: double
+  - auscultaPulmonar: String
+  - consciência: Consiencia 
+  - formato Tórax: FormatoTorax
+  - outros: String
+  - viaDeAcessoDoAr:  ViaDeAcessoDoAr
+  - usoDeOxigenoterapia: UsoDeOxigenoterapia
+  - horario_usoDeOxigenoterapia: String
+  - fiO2: String
+  - padraoMuscularVentilatório: PadraoMuscularVentilatório 
+  - ritmoVentilatório: RitmoVentilatório
+  - expansibilidadeTorácica: ExpansibilidadeTorácica
+  - expansibilidadeTorácica_Assimetrica: String
+  - sinais: Sinais
+  - demaisSinais: String
+  - sintomas: Sintomas
+  - demaisSintomas: String
+  - usoDeMusculaturaAcessória: UsoMusculaturaAcessoria
+  - tosse:Tosse
+  - secreção: Secrecao 
+  - dispneia: Dispneia
+  - borg: String
+  - classificação: String
+  - escalaModificadaDoMRC_Pacientes_Portadores_DPOC:String
+  - cianose: Cianose 
+  - avaliaçãoPostural: String
+  - palpação: String  
+}
 
   class TratamentosEsteticos{
   -tratamentosEsteticosID: int
@@ -197,20 +321,22 @@ class Contato {
     - bairro: String
   }
 
-  Fisioterapeuta --|> Usuario : É
-  Bebê --|> Paciente: É
+
+
+  Usuario <|-- Fisioterapeuta   : É um
   Fisioterapeuta --o Endereco : Possui
   Fisioterapeuta -- Paciente : Atende
   Fisioterapeuta -- Evolucao: Realiza
   Fisioterapeuta -- FichaAnamnese: Preenche
   Fisioterapeuta -- Indentificacao: Preenche
+  Bebê --|> Paciente: É
   Paciente --o Evolucao: Possui
   Paciente --o FichaAnamnese : Possui
   Paciente --o Indentificacao: Possui
   Indentificacao --o Endereco : Contém
   Indentificacao --o Contato : Contém
   FichaAnamnese --o Indentificacao : Contém
-  FichaAnamnese --o ExameFisico : Contém
+  FichaAnamnese --o ExameCardiorespiratorio : Contém
   FichaAnamnese --o HistoriaClinica : Contém
   HistoriaClinica --o Medicamentos: Contém
   HistoriaClinica --o AntecedentesPessoais: Contém
@@ -219,6 +345,19 @@ class Contato {
   HabitosDeVida --o Alergia: Contém
   HabitosDeVida --o Alimentacao: Contém
   TratamentosEsteticos --o Medicamentos: Contém
-
+  ExameCardiorespiratorio -- Consciencia
+  ExameCardiorespiratorio -- FormatoTorax
+  ExameCardiorespiratorio -- ViaDeAcessoDoAr
+  ExameCardiorespiratorio -- UsoDeOxigenoterapia
+  ExameCardiorespiratorio -- PadraoMuscularVentilatorio
+  ExameCardiorespiratorio -- RitmoVentilatorio
+  ExameCardiorespiratorio -- ExpansibilidadeToracica
+  ExameCardiorespiratorio -- Sinais
+  ExameCardiorespiratorio -- Sintomas
+  ExameCardiorespiratorio -- UsoMusculaturaAcessoria
+  ExameCardiorespiratorio -- Tosse
+  ExameCardiorespiratorio -- Secrecao
+  ExameCardiorespiratorio -- Dispneia
+  ExameCardiorespiratorio -- Cianose
 
 ```
