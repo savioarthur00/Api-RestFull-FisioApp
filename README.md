@@ -50,9 +50,7 @@ classDiagram
   class Paciente {
     - pacienteId: int
     - indetificacao: Identificacao
-    - endereco: Endereco
     - fichasAnamnese: List<FichaAnamnese>
-    + getEndereco(): Endereco
     + getFichasAnamnese(): List<FichaAnamnese>
   }
 
