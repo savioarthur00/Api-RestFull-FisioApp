@@ -22,25 +22,34 @@ public abstract class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	private String userName;
-	
-	private String password;
-	
+	private String userName;	
+	private String password;	
 	
 	@ElementCollection(fetch = FetchType.EAGER)
-	@CollectionTable(name="tab_user_type", joinColumns = @JoinColumn(name="user_id"))
-	@Column(name="type_id")
-	private List<String> type = new ArrayList<String>();
+	@CollectionTable(name="tab_user_perfil", joinColumns = @JoinColumn(name="user_id"))
+	@Column(name="perfil_id")
+	private List<String> perfil = new ArrayList<String>();
+
+	
+	
+	
+	public User() {
+		super();
+	}
+
+	
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 
-	
-	
-	
-	public User(String userName, String password, List<String> type) {
+
+	public User(String userName, String password, List<String> perfil) {
 		super();
 		this.userName = userName;
 		this.password = password;
-		this.type = type;
+		this.perfil = perfil;
 	}
 
 
@@ -64,14 +73,19 @@ public abstract class User {
 	}
 
 
-	public List<String> getType() {
-		return type;
+	
+
+
+	public List<String> getPerfil() {
+		return perfil;
 	}
 
 
-	public void setType(List<String> type) {
-		this.type = type;
+
+	public void setPerfil(List<String> perfil) {
+		this.perfil = perfil;
 	}
+
 
 
 	public int getId() {
