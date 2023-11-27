@@ -5,38 +5,25 @@ import ApiRest.FisioApp.Model.Usuarios.Paciente;
 public class PacienteDto {
 	
 	private int id;
-	private String name;
-	private int idade;
-	private String casoClinico;
-	private String avaliacao; 	
-	private EnderecoDto endereco;
+	private IdentificacaoDto identificacao;	
+	private String casoClinico;	
+	private FichaAnamineseDto fichasAnaminese ;
 	
+		
 
-	public PacienteDto(int id, String name, int idade, String casoClinico, String avaliacao, EnderecoDto endereco) {
+	public PacienteDto(IdentificacaoDto identificacao, String casoClinico, FichaAnamineseDto fichasAnaminese) {
 		super();
-		this.id = id;
-		this.name = name;
-		this.idade = idade;
+		this.identificacao = identificacao;
 		this.casoClinico = casoClinico;
-		this.avaliacao = avaliacao;
-		this.endereco = endereco;
+		this.fichasAnaminese = fichasAnaminese;
 	}
-
-
-
-
-
-
 
 	public Paciente toModel() {
 		Paciente paciente = new Paciente();
 		paciente.setId(this.id);
-		paciente.setName(this.name);
-		paciente.setIdade(this.idade);
+		paciente.setIdentificacao(this.identificacao != null ? this.identificacao.toModel():null);
+		paciente.setFichaAnaminese(this.fichasAnaminese != null ? this.fichasAnaminese.toModel():null);	
 		paciente.setCasoClinico(this.casoClinico);
-		paciente.setAvaliacao(this.avaliacao);
-		paciente.setEndereco(this.endereco != null ? this.endereco.toModel(): null);
-		
 		
 		
 		

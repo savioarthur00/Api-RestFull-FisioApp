@@ -22,7 +22,6 @@ public class FichaAnamineseDto {
 		FichaAnaminese anaminese = new FichaAnaminese();
 		anaminese.setTipo(this.tipo);
 		anaminese.setId(this.id);
-		
 			
 
 		

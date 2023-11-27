@@ -10,27 +10,36 @@ import ApiRest.FisioApp.Model.Usuarios.Paciente;
 public class UserFisioterapeutaDto {
 	
 	private int id;
-	private String name;
-	private String CRM;
-	private int idade;
 	private String especialidade;
 	private String password;
 	private String username;		
 	private List<PacienteDto> pacientes;		
-	private EnderecoDto endereco;
+	private String crm;	
+	private IdentificacaoDto identificacao;
 	
 		
-	
+
+	public UserFisioterapeutaDto(String especialidade, String password, String username, List<PacienteDto> pacientes,
+			String crm, IdentificacaoDto identificacao) {
+		super();
+		this.especialidade = especialidade;
+		this.password = password;
+		this.username = username;
+		this.pacientes = pacientes;
+		this.crm = crm;
+		this.identificacao = identificacao;
+	}
+
+
+
 	public Fisioterapeuta toModel() {
 		Fisioterapeuta fisioterapeuta = new Fisioterapeuta();
 		fisioterapeuta.setId(this.id);
-		fisioterapeuta.setCRM(this.CRM);
+		fisioterapeuta.setCRM(this.crm);
 		fisioterapeuta.setEspecialidade(this.especialidade);
-		fisioterapeuta.setIdade(this.idade);
 		fisioterapeuta.setPassword(this.password);
-		fisioterapeuta.setUserName(this.username);
-		fisioterapeuta.setName(this.name);
-		fisioterapeuta.setEndereco(this.endereco != null ? this.endereco.toModel():null);
+		fisioterapeuta.setUserName(this.username);		
+		fisioterapeuta.setIdentificacao(this.identificacao != null ? this.identificacao.toModel():null);
 		
 		if (this.pacientes != null) {
 	        List<Paciente> pacientesList = new ArrayList<>();
@@ -45,20 +54,6 @@ public class UserFisioterapeutaDto {
 	}
 	
 
-	public UserFisioterapeutaDto(int id, String name, String cRM, int idade, String especialidade,
-			List<PacienteDto> pacientes, EnderecoDto endereco) {
-		super();
-		this.id = id;
-		this.name = name;
-		CRM = cRM;
-		this.idade = idade;
-		this.especialidade = especialidade;
-		this.pacientes = pacientes;
-		this.endereco = endereco;
-	}
-
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -67,9 +62,9 @@ public class UserFisioterapeutaDto {
 		if (!(obj instanceof UserFisioterapeutaDto))
 			return false;
 		UserFisioterapeutaDto other = (UserFisioterapeutaDto) obj;
-		return Objects.equals(CRM, other.CRM) && Objects.equals(endereco, other.endereco)
-				&& Objects.equals(especialidade, other.especialidade) && id == other.id && idade == other.idade
-				&& Objects.equals(name, other.name) && Objects.equals(pacientes, other.pacientes);
+		return Objects.equals(crm, other.crm) && Objects.equals(identificacao, other.identificacao)
+				&& Objects.equals(especialidade, other.especialidade) && id == other.id && identificacao == other.identificacao
+				&& Objects.equals(pacientes, other.pacientes);
 	}
 	
 	

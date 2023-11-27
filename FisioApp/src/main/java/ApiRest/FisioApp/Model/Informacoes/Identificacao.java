@@ -24,6 +24,21 @@ public class Identificacao {
 	
 	
 	
+	
+	public Identificacao(String nome, String sexo, String estadoCivil, int idade, String raça, String profissao,
+			String ocupacao, Contato contato, Endereco endereco) {
+		super();
+		this.nome = nome;
+		this.sexo = sexo;
+		this.estadoCivil = estadoCivil;
+		this.idade = idade;
+		this.raça = raça;
+		this.profissao = profissao;
+		this.ocupacao = ocupacao;
+		this.contato = contato;
+		this.endereco = endereco;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -82,6 +97,10 @@ public class Identificacao {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
+
+	
+
+
 	
 	
 	

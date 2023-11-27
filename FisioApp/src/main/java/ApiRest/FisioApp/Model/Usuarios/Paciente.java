@@ -1,7 +1,6 @@
 package ApiRest.FisioApp.Model.Usuarios;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,7 +27,7 @@ public class Paciente {
 	private String casoClinico;	
 	
 	@OneToOne
-	private List<FichaAnaminese> fichasAnaminese ;
+	private FichaAnaminese fichaAnaminese ;
 	
 	
 	 @Column(name = "created_at")
@@ -40,11 +39,15 @@ public class Paciente {
 	 
 	 
 
-	public Paciente(Identificacao identificacao, String casoClinico, List<FichaAnaminese> fichasAnaminese) {
+	
+	public Paciente(Identificacao identificacao, String casoClinico, FichaAnaminese fichaAnaminese,
+			LocalDateTime createdAt, LocalDateTime updatedAt) {
 		super();
 		this.identificacao = identificacao;
 		this.casoClinico = casoClinico;
-		this.fichasAnaminese = fichasAnaminese;
+		this.fichaAnaminese = fichaAnaminese;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
 	}
 
 	public Paciente() {
@@ -110,6 +113,16 @@ public class Paciente {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	public FichaAnaminese getFichaAnaminese() {
+		return fichaAnaminese;
+	}
+
+	public void setFichaAnaminese(FichaAnaminese fichaAnaminese) {
+		this.fichaAnaminese = fichaAnaminese;
+	}
+
+	
 	 
 	
 	 
