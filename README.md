@@ -37,6 +37,8 @@ classDiagram
     -crm: String
     -idade: int
     -especialidade:String
+    -endereco: Endereco
+    -List<Pacientes>
     + realizaEvolucoes(evolucao: Evolucao): void
     + preencheFichaDeAnamnese(fichaAnamnese:FichaAnamnese):void
     + addPaciente(paciente: Paciente): void
