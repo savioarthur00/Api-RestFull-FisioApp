@@ -32,6 +32,11 @@ classDiagram
   }
 
   class Fisioterapeuta {
+    -id: int
+    -nome: String
+    -crm: String
+    -idade: int
+    -especialidade:String
     + realizaEvolucoes(evolucao: Evolucao): void
     + preencheFichaDeAnamnese(fichaAnamnese:FichaAnamnese):void
     + addPaciente(paciente: Paciente): void
