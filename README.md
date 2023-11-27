@@ -32,13 +32,12 @@ classDiagram
   }
 
   class Fisioterapeuta {
-    -id: int
-    -nome: String
+    -id: int    
     -crm: String
-    -idade: int
-    -especialidade:String
-    -endereco: Endereco
+    -especialidade:String 
     -List<Pacientes>
+    -identificacao: Identificacao
+
     + realizaEvolucoes(evolucao: Evolucao): void
     + preencheFichaDeAnamnese(fichaAnamnese:FichaAnamnese):void
     + addPaciente(paciente: Paciente): void
@@ -315,7 +314,6 @@ class Contato {
     -contatoId: int
     -Telefone: String 
     -Email: String
-    -NumeroDoResponsavel:String
 }
 
   class Endereco {
