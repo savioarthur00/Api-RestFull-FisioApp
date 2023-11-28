@@ -37,7 +37,6 @@ classDiagram
     -especialidade:String 
     -List<Pacientes>
     -identificacao: Identificacao
-
     + realizaEvolucoes(evolucao: Evolucao): void
     + preencheFichaDeAnamnese(fichaAnamnese:FichaAnamnese):void
     + addPaciente(paciente: Paciente): void
@@ -49,6 +48,7 @@ classDiagram
   class Paciente {
     - pacienteId: int
     - indetificacao: Identificacao
+    - evolucao: List<Evolucao>
     - fichasAnamnese: List<FichaAnamnese>
     + getFichasAnamnese(): List<FichaAnamnese>
   }
@@ -65,7 +65,7 @@ classDiagram
   class HistoriaClinica{
     -historiaClinicaId: int
     -habitosDeVida: HabitosDeVida
-    -medicamentos: Medicamentos
+    -medicamentos: String
     -antecedentesPessoais:AntecedentesPessoais
     -queixaPrincipal:String
     -historiaDaDoenca:String
@@ -81,30 +81,18 @@ classDiagram
 
   class HabitosDeVida {
     -habitosDeVidaID: int
-    -alergia:Alergia
-    -alimentacao: Alimentacao
-    -exerciciosFisicos: Boolean
+    -alergia:String
+    -alimentacao: String
+    -exerciciosFisicos: String
     -exerciciosFisicos_QntVezesNaSemana: int
     -ingestaoDeAguaPorDia_QuantosLitros: String
-    -fumante: boolean
-    -ingestaoDeBebidaAlcoolica: Boolean
+    -fumante: String
+    -ingestaoDeBebidaAlcoolica: String
 }
-
-  class Alergia {
-  -alergiaId: int
-  -possuiAlergia: boolean
-  -quaisAlergias: String
-  }
-
-  class Alimentacao {
-  -alimentacaoID: int
-  -regimeNutricional: boolean
-  -alimentacaoBalanceada: boolean
-  -NenhumaDasAlternativas: boolean 
-}
+ 
   class AntecedentesPessoais{
     - antecedentesPessoaisId: int
-    - alergia:Alergia
+    - alergia:String
     - doençaCardiorrespiratoria: Boolean
     - constipacaoIntestinal: Boolean
     - doençaRenal: Boolean
@@ -116,19 +104,6 @@ classDiagram
     - tabagismo/etilismo: Boolean
     - outros:String
 }
-
-class Medicamentos{
-- medicamentosId: int
-- tranquilizantes: boolean
-- anticolinergicos: boolean
-- corticoides: boolean
-- hormonios: boolean
-- diuréticos: boolean
-- alfadrenergicos: boolean
-- antidepressivos: boolean
-- hipotensores: boolean
-}
- 
 
 class ExameCardiorespiratorio{
   - exameCardiorespiratorioId: int
@@ -199,11 +174,9 @@ class ExameCardiorespiratorio{
        -profissão: String 
        -ocupação: String
        -contato: Contato
-       -responsável: String
        -diagnósticoClínico: String
        -cLassificacaoDasDoencas: String
-       -nomeDoMedico: String
-       -especialidade: String
+       
 
    }
   class Bebê {
@@ -252,13 +225,9 @@ class Contato {
   FichaAnamnese --o Indentificacao : Contém
   FichaAnamnese --o ExameCardiorespiratorio : Contém
   FichaAnamnese --o HistoriaClinica : Contém
-  HistoriaClinica --o Medicamentos: Contém
   HistoriaClinica --o AntecedentesPessoais: Contém
   HistoriaClinica --o HabitosDeVida: Contém
-  AntecedentesPessoais --o Alergia: Contém
-  HabitosDeVida --o Alergia: Contém
-  HabitosDeVida --o Alimentacao: Contém
-  TratamentosEsteticos --o Medicamentos: Contém
+ 
   
 
 ```
