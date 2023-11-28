@@ -128,131 +128,42 @@ class Medicamentos{
 - antidepressivos: boolean
 - hipotensores: boolean
 }
- class Consciencia {
-        NORMAL
-        OBNUBILACAO
-        TORPOR
-        COMA
-    }
-
-    class FormatoTorax {
-        NORMAL
-        TONEL
-        CARINATUM
-        SCAVATUM
-        SINUS
-    }
-
-    class ViaDeAcessoDoAr {
-        NASAL
-        ORAL
-        TRAQUEOSTOMIA
-    }
-
-    class UsoDeOxigenoterapia {
-        NAO
-        SIM
-        CONTINUO
-        ESPECIFICOS
-    }
-
-    class PadraoMuscularVentilatorio {
-        APICAL
-        DIAFRAGMATICO
-        MISTO
-        PARADOXAL
-    }
-
-    class RitmoVentilatorio {
-        REGULAR
-        IRREGULAR
-    }
-
-    class ExpansibilidadeToracica {
-        NORMAL
-        REDUZIDA
-        SIMETRICA
-        ASSIMETRICA
-    }
-
-    class Sinais {
-        CIANOSE
-        EDEMA
-        PALIDEZ
-        TIRAGEM
-        BATIMENTO_DA_ASA_DO_NARIZ
-        AUMENTO_DA_FR
-        GEMIDO
-    }
-
-    class Sintomas {
-        DISPNEIA
-        DOR
-        TONTURA
-    }
-class UsoMusculaturaAcessoria {
-        NAO
-        SIM
-    }
-
-    class Tosse {
-        AUSENTE
-        PRESENTE
-        PRODUTIVA
-        IMPRODUTIVA
-        EFICAZ
-        INEFICAZ
-    }
-
-    class Secrecao {
-        MUCOIDE
-        MUCOPURULENTA
-        PURULENTA
-        HEMATICA
-        OUTROS
-    }
-
-    class Dispneia {
-        AUSENTE
-        PRESENTE
-    }
-
-class Cianose { Ausente Presente Local }
+ 
 
 class ExameCardiorespiratorio{
   - exameCardiorespiratorioId: int
-  - fc:String + "bpm"
-  - fR: String + "r.p.m"
-  - pA:String +  "X"  "mmHg"
+  - fc:String
+  - fR: String
+  - pA:String
   - spO2: int
   - temperatura: int 
   - peso: double
   - altura: double
   - iMC: double
   - auscultaPulmonar: String
-  - consciência: Consiencia 
-  - formato Tórax: FormatoTorax
+  - consciência: String
+  - formato Tórax:String
   - outros: String
-  - viaDeAcessoDoAr:  ViaDeAcessoDoAr
-  - usoDeOxigenoterapia: UsoDeOxigenoterapia
+  - viaDeAcessoDoAr:  String
+  - usoDeOxigenoterapia: String
   - horario_usoDeOxigenoterapia: String
   - fiO2: String
-  - padraoMuscularVentilatório: PadraoMuscularVentilatório 
-  - ritmoVentilatório: RitmoVentilatório
-  - expansibilidadeTorácica: ExpansibilidadeTorácica
+  - padraoMuscularVentilatório: String
+  - ritmoVentilatório: String
+  - expansibilidadeTorácica: String
   - expansibilidadeTorácica_Assimetrica: String
   - sinais: Sinais
   - demaisSinais: String
   - sintomas: Sintomas
   - demaisSintomas: String
-  - usoDeMusculaturaAcessória: UsoMusculaturaAcessoria
-  - tosse:Tosse
-  - secreção: Secrecao 
-  - dispneia: Dispneia
+  - usoDeMusculaturaAcessória: String
+  - tosse:String
+  - secreção: String
+  - dispneia: String
   - borg: String
   - classificação: String
   - escalaModificadaDoMRC_Pacientes_Portadores_DPOC:String
-  - cianose: Cianose 
+  - cianose: String
   - avaliaçãoPostural: String
   - palpação: String  
 }
@@ -263,7 +174,7 @@ class ExameCardiorespiratorio{
   -quaisCirurgicos: String
   -quaisNaoCirurgico: String
   -CuidadosDiarioseProdutosEmUso: String
-  -medicamentos:Medicamentos 
+  -medicamentos:String
   }
 
   class Evolucao{
@@ -348,19 +259,6 @@ class Contato {
   HabitosDeVida --o Alergia: Contém
   HabitosDeVida --o Alimentacao: Contém
   TratamentosEsteticos --o Medicamentos: Contém
-  ExameCardiorespiratorio -- Consciencia
-  ExameCardiorespiratorio -- FormatoTorax
-  ExameCardiorespiratorio -- ViaDeAcessoDoAr
-  ExameCardiorespiratorio -- UsoDeOxigenoterapia
-  ExameCardiorespiratorio -- PadraoMuscularVentilatorio
-  ExameCardiorespiratorio -- RitmoVentilatorio
-  ExameCardiorespiratorio -- ExpansibilidadeToracica
-  ExameCardiorespiratorio -- Sinais
-  ExameCardiorespiratorio -- Sintomas
-  ExameCardiorespiratorio -- UsoMusculaturaAcessoria
-  ExameCardiorespiratorio -- Tosse
-  ExameCardiorespiratorio -- Secrecao
-  ExameCardiorespiratorio -- Dispneia
-  ExameCardiorespiratorio -- Cianose
+  
 
 ```
