@@ -143,14 +143,7 @@ class ExameCardiorespiratorio{
   - palpação: String  
 }
 
-  class TratamentosEsteticos{
-  -tratamentosEsteticosID: int
-  -jaRealizou: boolean
-  -quaisCirurgicos: String
-  -quaisNaoCirurgico: String
-  -CuidadosDiarioseProdutosEmUso: String
-  -medicamentos:String
-  }
+  
 
   class Evolucao{
     evolucaoId: int
