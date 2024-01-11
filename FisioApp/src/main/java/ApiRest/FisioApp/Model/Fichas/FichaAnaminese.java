@@ -5,8 +5,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import ApiRest.FisioApp.Model.Informacoes.Identificacao;
 import ApiRest.FisioApp.Model.Sintomas.Sintomas;
 
 @Entity
@@ -17,6 +19,9 @@ public class FichaAnaminese {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String tipo;
+	
+	@OneToOne
+	private Identificacao identificacao;
 	
 	
 		
