@@ -50,6 +50,20 @@ public class FichaAnaminese {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+
+
+
+	public Identificacao getIdentificacao() {
+		return identificacao;
+	}
+
+
+
+
+	public void setIdentificacao(Identificacao identificacao) {
+		this.identificacao = identificacao;
+	}
 	
 	
 	

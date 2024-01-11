@@ -3,11 +3,16 @@ package ApiRest.FisioApp.Model.Usuarios;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -32,6 +37,9 @@ public class Fisioterapeuta extends User {
 	private LocalDateTime updatedAt;
 	
 	@OneToMany
+	@ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "tab_fisioterapeuta_pacientes", joinColumns = @JoinColumn(name = "fisioterapeuta_id"))
+    @Column(name = "paciente_id")
 	private List<Paciente> pacientes;
 		
 
