@@ -13,14 +13,12 @@ public class Sintomas {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String nome;
-		
+	private String nome;	
 	
 	
 	public Sintomas(String nome) {
 		super();
-		this.nome = nome;
-		
+		this.nome = nome;	
 		
 	}
 	
