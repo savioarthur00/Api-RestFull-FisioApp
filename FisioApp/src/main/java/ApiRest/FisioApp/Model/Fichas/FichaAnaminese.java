@@ -18,7 +18,8 @@ public class FichaAnaminese {
 	private int id;
 	private String tipo;
 	
-			
+	
+		
 
 	public FichaAnaminese() {
 		super();
@@ -26,6 +27,7 @@ public class FichaAnaminese {
 
 		
 	
+
 	public String getTipo() {
 		return tipo;
 	}
