@@ -1,4 +1,4 @@
-package ApiRest.FisioApp.Model.Sintomas;
+package ApiRest.FisioApp.Model.Fichas;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,30 +7,24 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="sintomas")
-public class Sintomas {
+@Table(name="sinais")
+public class Sinais {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nome;
 		
-	
-	
-	public Sintomas(String nome) {
-		super();
-		this.nome = nome;
 		
-		
-	}
-	
-	
+
 	@Override
 	public String toString() {
-		return "Sintomas [nome=" + nome + "]";
+		return "Sinais [id=" + id + ", nome=" + nome + "]";
 	}
-
-
+	public Sinais(String nome) {
+		super();
+		this.nome = nome;
+	}
 	public String getNome() {
 		return nome;
 	}

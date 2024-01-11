@@ -4,12 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import ApiRest.FisioApp.Model.Informacoes.Identificacao;
-import ApiRest.FisioApp.Model.Sintomas.Sintomas;
+
 
 @Entity
 @Table(name="fichas")
@@ -20,7 +19,7 @@ public class FichaAnaminese {
 	private int id;
 	private String tipo;
 	
-	@OneToOne
+	@OneToOne	
 	private Identificacao identificacao;
 	
 	
@@ -52,14 +51,9 @@ public class FichaAnaminese {
 	}
 
 
-
-
 	public Identificacao getIdentificacao() {
 		return identificacao;
 	}
-
-
-
 
 	public void setIdentificacao(Identificacao identificacao) {
 		this.identificacao = identificacao;
