@@ -20,6 +20,8 @@ public class Sintomas {
 	public Sintomas(String nome) {
 		super();
 		this.nome = nome;
+		
+		
 	}
 	
 	

@@ -18,23 +18,14 @@ public class FichaAnaminese {
 	private int id;
 	private String tipo;
 	
-	@ManyToMany
-	private Sintomas sintomas;
-		
+			
 
 	public FichaAnaminese() {
 		super();
 	}
 
 		
-	public Sintomas getSintomas() {
-		return sintomas;
-	}
-
-	public void setSintomas(Sintomas sintomas) {
-		this.sintomas = sintomas;
-	}
-
+	
 	public String getTipo() {
 		return tipo;
 	}

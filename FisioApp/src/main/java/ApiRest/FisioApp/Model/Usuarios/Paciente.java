@@ -7,11 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
+import ApiRest.FisioApp.Model.Fichas.Evolucao;
 import ApiRest.FisioApp.Model.Fichas.FichaAnaminese;
 import ApiRest.FisioApp.Model.Informacoes.Identificacao;
 
@@ -28,6 +30,9 @@ public class Paciente {
 	
 	@OneToOne
 	private FichaAnaminese fichaAnaminese ;
+	
+	@ManyToMany
+	private Evolucao evolucao;
 	
 	
 	 @Column(name = "created_at")
