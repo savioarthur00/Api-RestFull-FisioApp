@@ -22,6 +22,8 @@ public class FichaAnaminese {
 	@OneToOne	
 	private Identificacao identificacao;
 	
+	@OneToOne 
+	private Exame exame;
 	
 		
 
@@ -58,6 +60,21 @@ public class FichaAnaminese {
 	public void setIdentificacao(Identificacao identificacao) {
 		this.identificacao = identificacao;
 	}
+
+
+
+
+	public Exame getExame() {
+		return exame;
+	}
+
+
+
+
+	public void setExame(Exame exame) {
+		this.exame = exame;
+	}
+	
 	
 	
 	
